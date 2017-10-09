@@ -6,7 +6,7 @@
 /*   By: esterna <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/13 15:52:50 by esterna           #+#    #+#             */
-/*   Updated: 2017/10/09 16:25:39 by esterna          ###   ########.fr       */
+/*   Updated: 2017/10/09 16:50:28 by esterna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ void				push(t_stack *stack, t_list *x);
 void				push_ab(t_stack *a, t_stack *b, char ch);
 
 void				push_back_b_stk(int debug, t_stack *a, t_stack *b);
+
+int					search_stack(int n, t_stack *stack);
 
 int					setup_stacks(int argc, char **argv, t_stack *stack);
 

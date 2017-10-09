@@ -6,7 +6,7 @@
 /*   By: esterna <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/04 20:36:15 by esterna           #+#    #+#             */
-/*   Updated: 2017/10/09 16:32:29 by esterna          ###   ########.fr       */
+/*   Updated: 2017/10/09 16:49:51 by esterna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,6 @@ void				sort_attempt_3(int debug, t_stack *a, t_stack *b)
 	int		range;
 	int		n;
 	int		i;
-	char	ch;
 
 	while (a->size > 5)
 	{

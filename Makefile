@@ -6,7 +6,7 @@
 #    By: esterna <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/26 17:01:46 by esterna           #+#    #+#              #
-#    Updated: 2017/10/09 15:03:47 by esterna          ###   ########.fr        #
+#    Updated: 2017/10/09 16:52:53 by esterna          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ DEPS = libft.a\
 FUNCTIONS = debugger.c\
 			ft_lstnew.c\
 			get_next_line.c\
+			small_sort.c\
 			spr_stack.c\
 		    ft_lstdel.c\
 		    ft_stack.c\
