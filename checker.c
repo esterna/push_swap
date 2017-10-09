@@ -6,7 +6,7 @@
 /*   By: esterna <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/13 16:58:52 by esterna           #+#    #+#             */
-/*   Updated: 2017/10/06 21:18:01 by esterna          ###   ########.fr       */
+/*   Updated: 2017/10/09 16:20:57 by esterna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static void			result(int n, t_stack *a, t_stack *b)
 		ft_putstr("OK\n");
 	else if (n == 1)
 		ft_putstr("KO\n");
+	stk_del(a, b);
 }
 
 int					main(int argc, char **argv)
@@ -46,7 +47,5 @@ int					main(int argc, char **argv)
 		ft_strdel(&line);
 	}
 	result(n, a, b);
-	free(line);
-	stk_del(a, b);
 	return (0);
 }

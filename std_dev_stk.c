@@ -6,7 +6,7 @@
 /*   By: esterna <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/05 15:02:22 by esterna           #+#    #+#             */
-/*   Updated: 2017/10/05 15:24:12 by esterna          ###   ########.fr       */
+/*   Updated: 2017/10/09 16:25:27 by esterna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int					in_range_occurrences(t_stack *s, int range)
 	return (n);
 }
 
-int					std_deviation_stk(t_stack *a)
+int					std_dev_stk(t_stack *a)
 {
 	int		tot;
 	t_list	*tmp;

@@ -6,7 +6,7 @@
 /*   By: esterna <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/13 15:52:50 by esterna           #+#    #+#             */
-/*   Updated: 2017/10/07 00:22:18 by esterna          ###   ########.fr       */
+/*   Updated: 2017/10/09 16:25:39 by esterna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,21 +63,10 @@ int					setup_stacks(int argc, char **argv, t_stack *stack);
 
 void				small_sort(int debug, t_stack *a, t_stack *b);
 
-void				sort_attempt_3(int debug, t_stack *a,
-									t_stack *b, int stdddev);
+void				sort_attempt_3(int debug, t_stack *a, t_stack *b);
 
-int					std_deviation_stk(t_stack *a);
+int					std_dev_stk(t_stack *a);
 
 void				stk_del(t_stack *a, t_stack *b);
-
-int					is_sorted(t_stack *stack);
-
-int					is_sorted_reversed(t_stack *stack);
-
-void				sort_attempt_4(int debug, t_stack *a, t_stack *b, int stddev);
-
-int					search_stack(int n, t_stack *stack);
-
-void				sort_stk(int debug, t_stack *a, t_stack *b);
 
 #endif

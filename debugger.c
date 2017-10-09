@@ -6,7 +6,7 @@
 /*   By: esterna <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/28 15:15:34 by esterna           #+#    #+#             */
-/*   Updated: 2017/10/05 22:51:52 by esterna          ###   ########.fr       */
+/*   Updated: 2017/10/09 16:24:06 by esterna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int				execute_p3(char *line, t_stack *a, t_stack *b)
 		ft_putstr_fd("Error\n", 2);
 		return (0);
 	}
+	print_stacks(debug, a, b);
 	return (1);
 }
 
@@ -62,6 +63,7 @@ int				execute_p2(char ch, char *line, t_stack *a, t_stack *b)
 		ft_putstr_fd("Error\n", 2);
 		return (0);
 	}
+	print_stacks(debug, a, b);
 	return (1);
 }
 
@@ -80,7 +82,6 @@ int				execute(int debug, char *line, t_stack *a, t_stack *b)
 		ch = *line;
 		line++;
 		n = execute_p2(ch, line, a, b);
-		print_stacks(debug, a, b);
 		return (n);
 	}
 	else if (*line == 'p' && (*(line + 1) == 'a' || *(line + 1) == 'b')
