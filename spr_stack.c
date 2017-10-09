@@ -6,7 +6,7 @@
 /*   By: esterna <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/13 16:57:23 by esterna           #+#    #+#             */
-/*   Updated: 2017/09/28 19:17:17 by esterna          ###   ########.fr       */
+/*   Updated: 2017/10/05 19:15:16 by esterna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void			rotate(t_stack *stack)
 {
 	t_list	*tmp;
 
+	if (stack->size < 2)
+		return ;
 	tmp = pop(stack);
 	if (tmp != NULL)
 	{
@@ -52,7 +54,7 @@ void			reverse_rotate(t_stack *stack)
 	t_list	*lst;
 	t_list	*tmp;
 
-	if (stack->head == NULL)
+	if (stack->size < 2)
 		return ;
 	lst = stack->head;
 	while (lst->next->next != NULL)

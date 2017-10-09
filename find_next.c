@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_attempt_3.c                                   :+:      :+:    :+:   */
+/*   find_next.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esterna <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/04 20:36:15 by esterna           #+#    #+#             */
-/*   Updated: 2017/10/06 23:49:43 by esterna          ###   ########.fr       */
+/*   Created: 2017/10/06 21:54:51 by esterna           #+#    #+#             */
+/*   Updated: 2017/10/06 22:23:10 by esterna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,11 +90,7 @@ void				push_back_b_stk(int debug, t_stack *a, t_stack *b)
 			push_stk_optim_b(debug, a, b);
 		}
 		else if (b->size > 1 && deref(b, 'n') > deref(b, 'h'))
-		{
 			execute(debug, "sb", a, b);
-			if (deref(a, 'h') < deref(b, 'h'))
-				execute(debug, "pb", a, b);
-		}
 		else
 			execute(debug, "rb", a, b);
 	}
@@ -120,35 +116,33 @@ void				push_stk_optim(int debug, t_stack *a, t_stack *b, int range)
 		execute(debug, "sb", a, b);
 }
 
-void				sort_attempt_3(int debug, t_stack *a, t_stack *b, int dev)
+void				sort_attempt_4(int debug, t_stack *a, t_stack *b, int dev)
 {
-	int		range;
 	int		n;
 	int		i;
+	int		next;
 	char	ch;
 
 	while (a->size > 5)
 	{
-		i = 0;
-		range = find_smallest(a) + dev;
-		n = in_range_occurrences(a, range);
+		next = find_smallest(a);
+		n = search_stack(next, a);
+		ch = (n <= (a->size / 2)) ? 't' : 'b';
+		i = 0;	
 		while (i < n)
 		{
-			ch = (search_stack(find_smallest(a), a) <= (a->size / 2)) ? 't' : 'b';
-			if ((a->size > 0 && deref(a, 'h') <= range) && !(a->size > 1
-				&& deref(a, 'n') <= range && deref(a, 'n') < deref(a, 'h')))
-			{
-				execute(debug, "pb", a, b);
-				push_stk_optim(debug, a, b, range);
-				i++;
-			}
-			else if (a->size > 1 && deref(a, 'n') <= range
-					&& deref(a, 'n') < deref(a, 'h'))
+			if (a->size > 1 && deref(a, 'n') < deref(a, 'h'))
 				execute(debug, "sa", a, b);
 			else if (ch == 't')
 				execute(debug, "ra", a, b);
 			else
 				execute(debug, "rra", a, b);
+			i++;
+		}
+		if (deref(a, 'h') == next)
+		{
+			execute(debug, "pb", a, b);
+			push_stk_optim(debug, a, b, next + dev);
 		}
 	}
 }

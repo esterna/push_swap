@@ -6,11 +6,19 @@
 /*   By: esterna <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/13 16:58:52 by esterna           #+#    #+#             */
-/*   Updated: 2017/10/04 15:56:20 by esterna          ###   ########.fr       */
+/*   Updated: 2017/10/06 21:18:01 by esterna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static void			result(int n, t_stack *a, t_stack *b)
+{
+	if (n == 1 && is_sorted(a) == 1 && b->size == 0)
+		ft_putstr("OK\n");
+	else if (n == 1)
+		ft_putstr("KO\n");
+}
 
 int					main(int argc, char **argv)
 {
@@ -18,7 +26,9 @@ int					main(int argc, char **argv)
 	t_stack		*a;
 	t_stack		*b;
 	int			debug;
+	int			n;
 
+	n = 1;
 	line = NULL;
 	if (argc == 1)
 		return (0);
@@ -26,19 +36,17 @@ int					main(int argc, char **argv)
 	a = init_stack();
 	b = init_stack();
 	if (setup_stacks(argc - 1, argv + 1, a) == 0)
-		return (0);
-	while (get_next_line(0, &line) > 0)
-		execute(debug, line, a, b, 0);
-	if (is_sorted(a) == 1 && b->size == 0)
-		ft_putstr("OK\n");
-	else
 	{
-		ft_putstr("KO\n");
-		ft_lstdel(&(b->head), ft_bzero);
+		ft_putstr_fd("Error\n", 2);
+		return (0);
 	}
+	while (n == 1 && get_next_line(0, &line) > 0)
+	{
+		n = execute(debug, line, a, b);
+		ft_strdel(&line);
+	}
+	result(n, a, b);
 	free(line);
-	ft_lstdel(&(a->head), ft_bzero);
-	free(a);
-	free(b);
+	stk_del(a, b);
 	return (0);
 }

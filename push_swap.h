@@ -6,7 +6,7 @@
 /*   By: esterna <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/13 15:52:50 by esterna           #+#    #+#             */
-/*   Updated: 2017/10/04 20:52:56 by esterna          ###   ########.fr       */
+/*   Updated: 2017/10/07 00:22:18 by esterna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,20 @@
 # include <stdlib.h>
 # include <limits.h>
 
-typedef struct			s_stack
+typedef struct		s_stack
 {
 	struct s_list	*head;
 	struct s_list	*tail;
 	int				size;
-}						t_stack;
+}					t_stack;
+
+int					deref(t_stack *s, char ch);
+
+int					find_smallest(t_stack *a);
+
+int					find_largest(t_stack *s);
+
+int					in_range_occurrences(t_stack *s, int range);
 
 void				swap(t_stack *stack);
 
@@ -32,25 +40,14 @@ void				reverse_rotate(t_stack *stack);
 
 void				rotate(t_stack *stack);
 
-void				execute(int debug, char *line, t_stack *a, t_stack *b, int p);
-
-int					find_med_stk(t_stack *stack);
-
-int					find_qua_stk(t_stack *stack, int med);
-
-int					find_3qua_stk(t_stack *stack, int med);
-
-int					find_largest(t_stack *s);
-
-int					find_smallest(t_stack *a);
+int					execute(int debug, char *line,
+							t_stack *a, t_stack *b);
 
 t_stack				*init_stack(void);
 
 int					is_sorted(t_stack *a);
 
 int					is_sorted_reversed(t_stack *stack);
-
-void				merge_sort_stacks(int debug, t_stack *a, t_stack *b);
 
 t_list				*pop(t_stack *stack);
 
@@ -60,18 +57,27 @@ void				push(t_stack *stack, t_list *x);
 
 void				push_ab(t_stack *a, t_stack *b, char ch);
 
+void				push_back_b_stk(int debug, t_stack *a, t_stack *b);
+
 int					setup_stacks(int argc, char **argv, t_stack *stack);
 
 void				small_sort(int debug, t_stack *a, t_stack *b);
 
-void				sort_stkb(int debug, t_stack *a, t_stack *b);
+void				sort_attempt_3(int debug, t_stack *a,
+									t_stack *b, int stdddev);
 
-void				sort_new(int debug, t_stack *a, t_stack *b);
+int					std_deviation_stk(t_stack *a);
 
-void				split_stacks_ab(int debug, t_stack *a, t_stack *b, char ch);
+void				stk_del(t_stack *a, t_stack *b);
 
-void				attempt_2(int debug, t_stack *a, t_stack *b);
+int					is_sorted(t_stack *stack);
 
-void				sort_attempt_3(int debug, t_stack *a, t_stack *b);
+int					is_sorted_reversed(t_stack *stack);
+
+void				sort_attempt_4(int debug, t_stack *a, t_stack *b, int stddev);
+
+int					search_stack(int n, t_stack *stack);
+
+void				sort_stk(int debug, t_stack *a, t_stack *b);
 
 #endif

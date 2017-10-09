@@ -6,7 +6,7 @@
 /*   By: esterna <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/13 16:00:25 by esterna           #+#    #+#             */
-/*   Updated: 2017/10/03 20:25:02 by esterna          ###   ########.fr       */
+/*   Updated: 2017/10/04 22:44:37 by esterna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void			push(t_stack *stack, t_list *x)
 	stack->size++;
 }
 
-t_list				*pop(t_stack *stack)
+t_list			*pop(t_stack *stack)
 {
 	t_list	*top;
 
@@ -44,5 +44,3 @@ t_list				*pop(t_stack *stack)
 		stack->tail = NULL;
 	return (top);
 }
-
-

@@ -6,52 +6,11 @@
 /*   By: esterna <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/27 21:24:39 by esterna           #+#    #+#             */
-/*   Updated: 2017/10/04 16:32:53 by esterna          ###   ########.fr       */
+/*   Updated: 2017/10/06 21:30:40 by esterna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int					is_sorted(t_stack *stack)
-{
-	t_list	*tmp;
-	int		ugh;
-	int		why;
-
-	if (stack->head == NULL)
-		return (0);
-	tmp = stack->head;
-	while (tmp->next != NULL)
-	{
-		ugh = *((int *)tmp->content);
-		why = *((int *)tmp->next->content);
-		if (ugh > why)
-			return (0);
-		tmp = tmp->next;
-	}
-	return (1);
-}
-
-int					is_sorted_reversed(t_stack *stack)
-{
-	t_list	*tmp;
-	int		ugh;
-	int		why;
-
-	if (stack->head == NULL)
-		return (0);
-	tmp = stack->head;
-	while (tmp->next != NULL)
-	{
-		ugh = *((int *)tmp->content);
-		why = *((int *)tmp->next->content);
-		if (ugh < why)
-			return (0);
-		tmp = tmp->next;
-	}
-	return (1);
-}
-
 
 static int			check_duplicates(t_list *lst)
 {
@@ -73,7 +32,7 @@ static int			check_duplicates(t_list *lst)
 	return (1);
 }
 
-int			str_to_stk(char *str, t_stack *stack)
+int					str_to_stk(char *str, t_stack *stack)
 {
 	char		*tmp;
 	long long	n;
@@ -99,51 +58,40 @@ int			str_to_stk(char *str, t_stack *stack)
 	return (1);
 }
 
-int			setup_stacks(int argc, char **argv, t_stack *stack)
+static int			nbr_check(int i, char **argv)
 {
-	int			i;
 	int			j;
-	long long	n;
-	int			tmp;
 	int			s;
 
-	i = argc - 1;
-	if (ft_strcmp(*(argv), "-v") == 0)
+	j = 0;
+	s = 1;
+	while (argv[i][j] != '\0' && (s += ft_isspace(argv[i][j])))
 	{
-		argv++;
-		i--;
+		if (ft_isdigit(argv[i][j]) == 0 && argv[i][j] != '-'
+				&& ft_isspace(argv[i][j]) == 0)
+			return (-1);
+		j++;
 	}
+	return (s);
+}
+
+int					setup_stacks(int argc, char **argv, t_stack *stack)
+{
+	int			i;
+	long long	n;
+	int			s;
+
+	i = (ft_strcmp(*(argv), "-v") == 0 && argv++) ? argc - 2 : argc - 1;
 	while (i >= 0)
 	{
-		j = 0;
-		s = 0;
-		while (argv[i][j] != '\0')
-		{
-			if (ft_isdigit(argv[i][j]) == 0 && argv[i][j] != '-'
-					&& ft_isspace(argv[i][j]) == 0)
-			{
-				ft_putstr_fd("Error\n", 2);
-				return (0);
-			}
-			s += ft_isspace(argv[i][j]);
-			j++;
-		}
-		if (s > 0 && str_to_stk(argv[i], stack) == 0)
+		s = nbr_check(i, argv);
+		if (s == -1 || (s > 1 && str_to_stk(argv[i], stack) == 0) ||
+			((n = ft_atoi(argv[i])) > INT_MAX || n < INT_MIN))
 			return (0);
-		n = ft_atoi(argv[i]);
-		if (n > INT_MAX || n < INT_MIN)
-		{
-			ft_putstr_fd("Error\n", 2);
-			return (0);
-		}
-		tmp = n;
-		push(stack, ft_lstnew((const void *)(&tmp), sizeof(int)));
+		push(stack, ft_lstnew((const void *)(&n), sizeof(int)));
 		i--;
 	}
 	if (check_duplicates(stack->head) == 0)
-	{
-		ft_putstr_fd("Error\n", 2);
 		return (0);
-	}
 	return (1);
 }
