@@ -6,7 +6,7 @@
 /*   By: esterna <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/13 15:52:50 by esterna           #+#    #+#             */
-/*   Updated: 2017/10/09 16:50:28 by esterna          ###   ########.fr       */
+/*   Updated: 2017/11/14 21:29:43 by esterna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int					deref(t_stack *s, char ch);
 int					find_smallest(t_stack *a);
 
 int					find_largest(t_stack *s);
+
+int					find_sort(t_stack *a, int debug);
 
 int					in_range_occurrences(t_stack *s, int range);
 
@@ -57,18 +59,22 @@ void				push(t_stack *stack, t_list *x);
 
 void				push_ab(t_stack *a, t_stack *b, char ch);
 
-void				push_back_b_stk(int debug, t_stack *a, t_stack *b);
-
 int					search_stack(int n, t_stack *stack);
 
 int					setup_stacks(int argc, char **argv, t_stack *stack);
 
-void				small_sort(int debug, t_stack *a, t_stack *b);
-
-void				sort_attempt_3(int debug, t_stack *a, t_stack *b);
+int					small_sort(int debug, t_stack *a, t_stack *b);
 
 int					std_dev_stk(t_stack *a);
 
 void				stk_del(t_stack *a, t_stack *b);
+
+int					rotate_sort(int debug, t_stack *a, t_stack *b);
+
+int					rev_rotate_sort(int debug, t_stack *a, t_stack *b);
+
+int					insertion_sort(int debug, t_stack *a, t_stack *b);
+
+int					merge_sort_stk(int debug, t_stack *a, t_stack *b);
 
 #endif

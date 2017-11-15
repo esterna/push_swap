@@ -6,7 +6,7 @@
 /*   By: esterna <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/09 16:51:57 by esterna           #+#    #+#             */
-/*   Updated: 2017/10/09 16:52:25 by esterna          ###   ########.fr       */
+/*   Updated: 2017/11/14 21:29:14 by esterna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,16 @@ int					search_stack(int n, t_stack *stack)
 	return (-1);
 }
 
-void				small_sort(int debug, t_stack *a, t_stack *b)
+int				small_sort(int debug, t_stack *a, t_stack *b)
 {
 	int		n;
+	int		s;
 
+	s = 0;
 	if ((n = a->size) <= 2)
 	{
 		execute(debug, "sa", a, b);
-		return ;
+		return (1);
 	}
 	while (a->size != n || is_sorted(a) != 1)
 	{
@@ -54,7 +56,12 @@ void				small_sort(int debug, t_stack *a, t_stack *b)
 			execute(debug, "rb", a, b);
 		else if (b->size > 1 && deref(b, 'h') < deref(b, 'n'))
 			execute(debug, "sb", a, b);
+		s++;
 		while (is_sorted(a) == 1 && a->size != n)
+		{
+			s++;
 			execute(debug, "pa", a, b);
+		}
 	}
+	return (s);
 }

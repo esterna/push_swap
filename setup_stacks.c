@@ -6,7 +6,7 @@
 /*   By: esterna <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/27 21:24:39 by esterna           #+#    #+#             */
-/*   Updated: 2017/10/09 16:32:06 by esterna          ###   ########.fr       */
+/*   Updated: 2017/10/10 23:25:59 by esterna          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ int					str_to_stk(char *str, t_stack *stack)
 	{
 		while ((ft_isdigit(*str) == 1 || *str == '-') && str != tmp)
 			str--;
+		if (str == tmp)
+			break;
 		n = ft_atoi(str + 1);
 		if (n > INT_MAX || n < INT_MIN)
 		{
